@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root  'users#index'
+
   #User
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
