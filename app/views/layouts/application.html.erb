@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Skillio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,20 +12,26 @@
 
   <body>
     <header>
-      <div class="header-logo">
+      <div>
         <% if @current_user %>
           <%= link_to("Skillio", "/users/index") %>
         <% else %>
           <%= link_to("Skillio", "/") %>
         <% end %>
       </div>
-      <ul class="header-menus">
+      <ul>
         <% if @current_user %>
           <li>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
           <li>
             <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <%= link_to("投稿一覧", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("投稿", "/posts/new") %>
           </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
@@ -42,9 +49,10 @@
         <% end %>
       </ul>
     </header>
+    <hr>
 
     <% if flash[:notice] %>
-      <div class="flash">
+      <div>
         <%= flash[:notice] %>
       </div>
     <% end %>

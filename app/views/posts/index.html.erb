@@ -1,0 +1,18 @@
+<h1>投稿ページ :index</h1>
+
+<div>
+    <% @posts.each do |post| %>
+        <div>
+            <div>
+                サムネ
+                <img src="<%= "/post_images/#{post.image_name}" %>">
+            </div>
+            <%= link_to(post.title,"/posts/#{post.id}") %> :by <%= post.user.name %>
+            <% if post.user_id == @current_user.id %>
+                <%= link_to("編集", "/posts/#{post.id}/edit") %>
+                <%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %>
+            <% end %>
+            <br>
+        </div>
+    <% end %>
+</div>

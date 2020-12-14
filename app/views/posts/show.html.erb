@@ -1,0 +1,17 @@
+<h1>投稿ページ <%= @post.user.name %></h1>
+
+<div>
+    <div>
+        サムネ
+        <img src="<%= "/post_images/#{@post.image_name}" %>">
+    </div><br>
+    タイトル：<br><%= @post.title %><br><br>
+    内容：<br><%= safe_join(@post.content.split("\n"),tag(:br)) %> :by <%= @post.user.name %><br><br>
+    url：<a target="_blank" href="<%= @post.url %>"><%= @post.url %></a>
+    <% if @post.user_id == @current_user.id %>
+        <div>
+          <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+          <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+        </div>
+    <% end %>
+</div>

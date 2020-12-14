@@ -1,0 +1,25 @@
+<div>
+  <div>
+    <h1>編集する</h1>
+    <%= form_tag("/posts/#{@post.id}/update", {multipart: true}) do %>
+      <div>
+        <div>
+          <% @post.errors.full_messages.each do |message| %>
+            <div>
+              <%= message %>
+            </div>
+          <% end %>
+          <div>画像(サムネ)</div>
+          <input name="image" type="file"><br>
+          <div>タイトル</div>
+          <textarea name="title"><%= @post.title %></textarea>
+          <div>内容(ポートフォリオの)</div>
+          <textarea name="content"><%= @post.content %></textarea>
+          <div>ポートフォリオのURL</div>
+          <input name="url" value="<%= @post.url %>"><br>
+          <input type="submit" value="保存">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
