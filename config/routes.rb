@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   #home画面
   get "/" => "home#top"
   get "about" => "home#about"
+
+  resources :relationships, only: [:create, :destroy]
 end

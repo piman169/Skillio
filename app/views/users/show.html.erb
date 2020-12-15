@@ -26,4 +26,25 @@
       <br>
     <% end %>
   </div>
+  <%= render "relationships/follow_button", user: @user %> 
+
+    <% if @user.id == @current_user.id %>
+    <h3>フォロー一覧 <%= @current_user.followings.count %>人</h3>
+    <% @current_user.followings.each do |user| %>
+      <div>
+        <div>
+          <%= link_to(user.name, "/users/#{user.id}") %>
+        </div>
+      </div>
+    <% end %>
+
+    <h3>フォロワー一覧 <%= @current_user.followers.count %>人</h3>
+    <% @current_user.followers.each do |user| %>
+      <div>
+        <div>
+          <%= link_to(user.name, "/users/#{user.id}") %>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
 </div>
