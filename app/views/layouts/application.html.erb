@@ -14,49 +14,46 @@
     <header>
       <div>
         <% if @current_user %>
-          <%= link_to("Skillio", "/users/index") %>
+          <%= link_to("Skillio", "/users/index", {class: "logo"}) %>
+          <%= link_to("ログアウト", "/logout", {method: :post,class: "header-link"}) %>
         <% else %>
-          <%= link_to("Skillio", "/") %>
+          <%= link_to("Skillio", "/", {class: "logo"}) %>
+          <%= link_to("新規登録", "/signup", {class: "header-link"}) %>
+          <%= link_to("ログイン", "/login", {class: "header-link"}) %>
         <% end %>
       </div>
-      <ul>
-        <% if @current_user %>
-          <li>
-            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-          </li>
-          <li>
-            <%= link_to("ユーザー一覧", "/users/index") %>
-          </li>
-          <li>
-            <%= link_to("投稿一覧", "/posts/index") %>
-          </li>
-          <li>
-            <%= link_to("投稿", "/posts/new") %>
-          </li>
-          <li>
-            <%= link_to("ログアウト", "/logout", {method: :post}) %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to("Skillioとは", "/about") %>
-          </li>
-          <li>
-            <%= link_to("新規登録", "/signup") %>
-          </li>
-          <li>
-            <%= link_to("ログイン", "/login") %>
-          </li>
-        <% end %>
-      </ul>
     </header>
-    <hr>
 
-    <% if flash[:notice] %>
-      <div>
-        <%= flash[:notice] %>
+    <div class="wrapper">
+
+      <nav>
+        <ul>
+          <% if @current_user %>
+            <li>
+              <%= link_to(@current_user.name, "/users/#{@current_user.id}", {class: "nav-link"}) %>
+            </li>
+            <li>
+              <%= link_to("ユーザー一覧", "/users/index", {class: "nav-link"}) %>
+            </li>
+            <li>
+              <%= link_to("みんなの投稿", "/posts/index", {class: "nav-link"}) %>
+            </li>
+            <li>
+              <%= link_to("投稿", "/posts/new", {class: "nav-link"}) %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+
+      <div class="content">
+        <% if flash[:notice] %>
+          <div>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <%= yield %>
       </div>
-    <% end %>
 
-    <%= yield %>
+    </div>
   </body>
 </html>

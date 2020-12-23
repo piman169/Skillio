@@ -1,0 +1,32 @@
+<div class="gallery-title">
+    <h3><%= @user.name %>のportfolio</h3>
+</div>
+<div class="gallery-container">
+    <% @user.posts.order(created_at: :desc).each do |post| %>
+        <div class="box">
+            <div class="imgBx">
+                <img src="<%= "/post_images/#{post.image_name}" %>">
+                <h2>もう一度クリックで戻る</h2>
+                <div class="content">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content %></p>
+                    <% if post.url %>
+                      <a target="_blank" href="<%= post.url %>"><%= post.url %></a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<script>
+ 
+    var imgBx = document.querySelectorAll('.imgBx');
+
+    imgBx.forEach(popup => popup.addEventListener('click',() => {
+        popup.classList.toggle('active')
+    }))
+
+
+</script>
+

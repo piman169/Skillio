@@ -11,6 +11,10 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
+    def gallery
+        @user = User.find_by(id: params[:id])
+    end
+
     def new
         @user = User.new
     end

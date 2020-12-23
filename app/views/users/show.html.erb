@@ -1,7 +1,7 @@
 <div>
   <div>
-    <div>
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
+    <div class="user-card">
+      <img class="photo-user" src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
       <% if @user.id == @current_user.id %>
@@ -9,23 +9,8 @@
       <% end %>
     </div>
     <hr>
-    <h4><%= @user.name %>の投稿一覧</h4>
-    <% @user.posts.each do |post| %>
-      <div>
-        サムネ
-        <img src="<%= "/post_images/#{post.image_name}" %>">
-      </div>
-      <%= post.content %> :by <%= post.user.name %>
-      <% if post.user_id == @current_user.id %>
-        <div>
-          <%= link_to("編集", "/posts/#{post.id}/edit") %>
-          <%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %>
-        </div>
-      <% end %>
-      <br>
-      <br>
-    <% end %>
-  </div>
+    <h4><%= link_to("portfolioギャラリーを見る","/gallery/#{@user.id}") %></h4>
+
   <%= render "relationships/follow_button", user: @user %> 
 
     <% if @user.id == @current_user.id %>
@@ -39,12 +24,12 @@
     <% end %>
 
     <h3>フォロワー一覧 <%= @current_user.followers.count %>人</h3>
-    <% @current_user.followers.each do |user| %>
-      <div>
+      <% @current_user.followers.each do |user| %>
         <div>
-          <%= link_to(user.name, "/users/#{user.id}") %>
+          <div>
+            <%= link_to(user.name, "/users/#{user.id}") %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
     <% end %>
 </div>

@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+ 
+$primary-color-dark:   #00796B;
+$primary-color:        #009688;
+$primary-color-light:  #B2DFDB;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FF5722;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+header{
+    background-color: $primary-color-dark;
+    height: 32px;
+    position: fixed;
+    width: 100%;
+    // box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+    .logo{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color:$primary-color-text;
+        font-size: 24px;
+        margin: 0 0 0 20px;
+        line-height: 32px;
+    }
+    .header-link{
+        color: $primary-color-text;
+        float: right;
+        line-height: 32px;
+        margin: 0 20px 0 0;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.wrapper{
+    display: grid;
+    grid-template:
+     "..... ........ ....... ....."
+     "..... nav      content ....."
+     "..... ........ ....... ....."
+     /auto  200px    1fr     auto;
+    nav{
+        grid-area: nav;
+        background-color: darken($primary-color-dark, 5%);
+        height: 100vh;
+        position: fixed;
+            top: 32px;
+        width: 200px;
+        box-shadow: 6px 6px 6px rgba(0,0,0,0.2);
+        .nav-link{
+            color: darken($primary-color-text,10%);
+            line-height: 32px;
+            margin-left: 8px;
+            position: relative;
+            &:hover{
+                text-decoration: underline;
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                    bottom:0 ;
+                    left: 0;
+                height: 1px;
+                width: 120px;
+                background-color: $primary-color;
+            }
+        }
+    }
+    .content{
+        grid-area: content;
+        margin-top: 32px;
+    }
+}
