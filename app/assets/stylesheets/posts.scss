@@ -57,7 +57,7 @@ textarea {
         width: 60vw;
         height: 150px;
     }
-    input[name="url"]{
+    input[name="url"],input[name="password"],input[name="email"],input[name="name"]{
         width: 60vw;
         border: 3px solid $primary-color-dark;
         height: 32px;

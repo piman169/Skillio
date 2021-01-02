@@ -10,11 +10,16 @@
         <% end %>
 
         <%= form_tag("/login") do %>
-          <p>メールアドレス</p>
+        <div class="post-container">
+        <div>
+          <h4>メールアドレス</h4>
           <input name="email" value="<%= @email %>">
-          <p>パスワード</p>
+          <h4>パスワード</h4>
           <input type="password" name="password" value="<%= @password %>">
+          <br>
           <input type="submit" value="ログイン">
+        </div>
+        </div>
         <% end %>
       </div>
     </div>
