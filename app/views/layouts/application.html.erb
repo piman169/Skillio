@@ -6,6 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -33,7 +36,10 @@
               <%= link_to(@current_user.name, "/users/#{@current_user.id}", {class: "nav-link"}) %>
             </li>
             <li>
-              <%= link_to("ユーザー一覧", "/users/index", {class: "nav-link"}) %>
+              <%= link_to("follow一覧", "/following/#{@current_user.id}", {class: "nav-link"}) %>
+            </li>
+            <li>
+              <%= link_to("follower一覧", "/follower/#{@current_user.id}", {class: "nav-link"}) %>
             </li>
             <li>
               <%= link_to("みんなの投稿", "/posts/index", {class: "nav-link"}) %>

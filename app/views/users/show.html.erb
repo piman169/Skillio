@@ -1,35 +1,78 @@
-<div>
-  <div>
-    <div class="user-card">
-      <img class="photo-user" src="<%= "/user_images/#{@user.image_name}" %>">
-      <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% end %>
-    </div>
-    <hr>
-    <h4><%= link_to("portfolioギャラリーを見る","/gallery/#{@user.id}") %></h4>
+<div class="swiper-container">
+	<!-- メイン表示部分 -->
+  <h4>Hello! <%= @user.name %>’s page</h4>
+	<div class="swiper-wrapper">
+		<!-- 各スライド -->
+    <div class="swiper-slide">
+      <div class="card" style="">
+          <div class="card-header">
+            <% if @user.id == @current_user.id %>
+              <div>
+                <%= link_to("編集", "/users/#{@user.id}/edit") %>
+              </div>
+            <% end %>
+          </div>
+          <img class="photo-user" src="<%= "/user_images/#{@user.image_name}" %>">
+          <div class="sliderText">
+            <h3><%= @user.name %><br><span style="font-size:18px;"><%= @user.email %></span></h3>
+          </div>
+          <div class="content">
+            <%= link_to("follow一覧 :#{@user.followings.count}人", "/following/#{@user.id}", {class: "card-link"}) %>
+            <br>
+            <%= link_to("follower一覧 :#{@user.followers.count}人", "/follower/#{@user.id}", {class: "card-link"}) %>
+            <hr>
+            <h3>作品数：<%= @user.posts.count %></h3>
+            <%= link_to("Portfolio gallery", "/gallery/#{@user.id}", {class: "portfolio-look"}) %>
 
-  <%= render "relationships/follow_button", user: @user %> 
-
-    <% if @user.id == @current_user.id %>
-    <h3>フォロー一覧 <%= @current_user.followings.count %>人</h3>
-    <% @current_user.followings.each do |user| %>
-      <div>
-        <div>
-          <%= link_to(user.name, "/users/#{user.id}") %>
-        </div>
+            <p class="content-date" style="color:#999; font-weight:300;">最近の3作品→</p>
+          </div>
       </div>
-    <% end %>
+    </div>
 
-    <h3>フォロワー一覧 <%= @current_user.followers.count %>人</h3>
-      <% @current_user.followers.each do |user| %>
-        <div>
-          <div>
-            <%= link_to(user.name, "/users/#{user.id}") %>
+    <% @user.posts.order(created_at: :desc).limit(3).each do |post| %>
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-header">
+            <% if post.user_id == @current_user.id %>
+              <div>
+                <%= link_to("編集", "/posts/#{post.id}/edit") %>
+                <%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %>
+              </div>
+            <% end %>
+          </div>
+          <div class="sliderText">
+            <h3><%= post.title %></h3>
+          </div>
+          <div class="content">
+            <p class="content-text">内容:<br><%= post.content %></p>
+            <% if post.url %>
+              <a class="portfolio-look" target="_blank" href="<%= post.url %>">作品を見る</a>
+            <% end %>
+            <p class="content-date"><%= post.created_at.strftime('%Y/%m/%d') %></p>
           </div>
         </div>
-      <% end %>
+        <!--img class="card-back" src="<%= "/post_images/#{post.image_name}" %>" -->
+      </div>
     <% end %>
+	</div>
 </div>
+
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides : true,
+  slidesPerView: '1.4',
+  coverflowEffect: {
+    rotate: 40,
+    stretch: 0,
+    depth: 500,
+    modifier: 1,
+    slideShadows: false,
+  },
+  pagination: {
+    el: 'swiper-pagination',
+  }
+});
+</script>
+

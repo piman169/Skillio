@@ -1,18 +1,28 @@
-<h1>投稿ページ :index</h1>
+<h1>みんなの作品</h1>
 
 <div>
     <% @posts.each do |post| %>
-        <div>
-            <div>
-                サムネ
-                <img src="<%= "/post_images/#{post.image_name}" %>">
-            </div>
-            <%= link_to(post.title,"/posts/#{post.id}") %> :by <%= post.user.name %>
+        <div class="card" style="transform:scale(.9);">
+          <div class="card-header">
             <% if post.user_id == @current_user.id %>
+              <div>
                 <%= link_to("編集", "/posts/#{post.id}/edit") %>
                 <%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %>
+              </div>
             <% end %>
-            <br>
+          </div>
+          <img class="photo-user" src="<%= "/user_images/#{post.user.image_name}" %>">
+          <div class="sliderText">
+            <h3><%= post.title %></h3>
+          </div>
+          <div class="content">
+            <p class="content-text">内容:<br><%= post.content %></p>
+            <% if post.url %>
+              <a class="portfolio-look" target="_blank" href="<%= post.url %>">作品を見る</a>
+            <% end %>
+            <p class="content-date"><%= post.created_at.strftime('%Y/%m/%d') %></p>
+          </div>
         </div>
     <% end %>
 </div>
+

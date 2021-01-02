@@ -1,3 +1,76 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary-color-dark:   #00796B;
+$primary-color:        #009688;
+$primary-color-light:  #B2DFDB;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FF5722;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+input[type="text"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+}
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+    &::-webkit-search-decoration {
+      display: none;
+    }
+    &::focus {
+      outline-offset: -2px;
+    }
+}
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+// //////////////////////////////////////////////////////// //
+.post-container{
+    display: flex;
+    justify-content: center;
+    h4{
+        margin-top: 22px;
+    }
+    textarea{
+        border: 3px solid $primary-color-dark;
+        background: #fff;
+    }
+    textarea[name="title"]{
+        width: 60vw;
+    }
+    textarea[name="content"]{
+        width: 60vw;
+        height: 150px;
+    }
+    input[name="url"]{
+        width: 60vw;
+        border: 3px solid $primary-color-dark;
+        height: 32px;
+    }
+    input[type="submit"]{
+        margin-top: 22px;
+        width: 200px;
+        border: 3px solid $primary-color-dark;
+        font-weight: 600;
+        border-radius: 50px;
+        height: 50px;
+    }
+}

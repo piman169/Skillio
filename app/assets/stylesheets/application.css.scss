@@ -35,10 +35,11 @@ header{
     background-color: $primary-color-dark;
     height: 32px;
     position: fixed;
+    z-index: 1111111111111;
     width: 100%;
     // box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
     .logo{
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         color:$primary-color-text;
         font-size: 24px;
         margin: 0 0 0 20px;

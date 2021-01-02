@@ -1,0 +1,15 @@
+<h3><%= @user.name %>のfollow一覧 <%= @user.followings.count %>人</h3>
+<% @user.followings.each do |user| %>
+  <div class="flex">
+    <div><img class="user-icon" src="<%= "/user_images/#{user.image_name}" %>"></div>
+    <div>
+      <%= link_to(user.name, "/users/#{user.id}",{class: "user-text"})%>
+      <br>follower:<%= user.followers.count %>人
+      <br>作品数:<%= user.posts.count %>
+    </div>
+    <% unless @current_user.id == user.id %>
+      <div class="f-btn"><%= render "relationships/follow_button", user: user %></div>
+    <% end %>
+  </div>
+  <hr>
+<% end %>

@@ -16,6 +16,7 @@ $divider-color:        #BDBDBD;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    word-break: break-all;
 }
 
 .user-card{
@@ -27,7 +28,6 @@ $divider-color:        #BDBDBD;
         height: 200px;
     }
 }
-
 // ポートフォリオギャラリー
 .gallery-container{
     position: relative;
@@ -125,3 +125,167 @@ $divider-color:        #BDBDBD;
     background-color: #111;
     color: #fff;
 }
+
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .swiper-container {
+      width: calc(100vw - 200px);
+      height: 100%;
+    }
+
+    .swiper-slide {
+      height: 95vh;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+.card{
+    position: relative;
+    transform: perspective(-100px);
+    background-color: #fff;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid $secondary-text-color;
+    border-radius: 15px 0 0 0;
+    img{
+        position: absolute;
+        top: 0;
+        width: 60px;
+        max-height: 100px;
+        object-fit: cover;
+        z-index: 111111;
+        border-radius: 15px 0 0 0;
+    }
+    .card-header{
+        background: $primary-color-dark;
+        height: 26px;
+        border-radius: 15px 0 0 0;
+        a{
+            color: $primary-color-light;
+            text-decoration: none;
+            float: right;
+            margin: 0 8px;
+            line-height: 26px;
+        }
+    }
+    .content{
+        width:400px;
+        padding: 8px 16px;
+        box-sizing: border-box;
+        .portfolio-look{
+            display: inline-block;
+            margin: 10px 0 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 2px solid $accent-color;
+            color: $secondary-text-color;
+            font-weight: 600;
+        }
+        .content-date{
+            position: absolute;
+            bottom:20px;
+            right: 20px;
+        }
+        .card-link{
+            color: $secondary-text-color;
+            font-weight: 600;
+            display: inline-block;
+            margin: 4px 0 2px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .sliderText{
+        position: relative;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $primary-color;
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // // background-size: cover;
+        // &::after{
+        //     content: "";
+        //     position: absolute;
+        //         top: 0;
+        //         left: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     background: rgba($color: #000000, $alpha: .3);
+        // }
+        h3{
+            color: #FFF;
+            font-size: 2em;
+            font-weight: 100;
+        }
+    }
+}
+.swiper-slide{
+    width: 400px;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    .f-btn{
+        width: 100px;
+        height: 36px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        background: $accent-color;
+        border-radius: 20px;
+    }
+    .user-icon{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    button,
+    input[type="submit"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+    .user-text{
+        text-decoration: none;
+        color: $secondary-text-color;
+        font-weight: 600;
+    }
+}
+// .card-back{
+//     position: absolute;
+//     transform: perspective(1000px) rotateY(180deg);
+//     // overflow: hidden;
+//     backface-visibility: hidden;
+//     width: 400px;
+//     height: 500px;
+//     // z-index: 1111111111;
+// }

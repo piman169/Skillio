@@ -2,13 +2,29 @@
   <div>
     <h1>ユーザー一覧</h1>
     <% @users.each do |user| %>
-      <div>
-        <div>
-          <img src="<%= "/user_images/#{user.image_name}" %>">
-        </div>
-        <div>
-          <%= link_to(user.name, "/users/#{user.id}") %>
-        </div>
+      <div class="card" style="transform:scale(.9);">
+          <div class="card-header">
+            <% if user.id == @current_user.id %>
+              <div>
+                <%= link_to("編集", "/users/#{user.id}/edit") %>
+              </div>
+            <% end %>
+          </div>
+          <img class="photo-user" src="<%= "/user_images/#{user.image_name}" %>">
+          <div class="sliderText">
+            <h3><%= user.name %><br><span style="font-size:18px;"><%= user.email %></span></h3>
+          </div>
+          <div class="content">
+            <%= link_to("follow一覧 :#{user.followings.count}人", "/following/#{user.id}", {class: "card-link"}) %>
+            <br>
+            <%= link_to("follower一覧 :#{user.followers.count}人", "/follower/#{user.id}", {class: "card-link"}) %>
+            <hr>
+            <h3>作品数：<%= user.posts.count %></h3>
+            <%= link_to("Portfolio gallery", "/gallery/#{user.id}", {class: "portfolio-look"}) %>
+            <div><%= render "relationships/follow_button", user: user %></div>
+
+            <p class="content-date" style="color:#999; font-weight:300;">最近の3作品→</p>
+          </div>
       </div>
     <% end %>
   </div>

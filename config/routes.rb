@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
   get "login" => "users#login_form"
   get "gallery/:id" => "users#gallery"
+  get "follower/:id" => "users#follower"
+  get "following/:id" => "users#following"
+
 
   #home画面
   get "/" => "home#top"

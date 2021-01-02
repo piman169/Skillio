@@ -1,25 +1,19 @@
-<div>
-  <div>
-    <h1>投稿する</h1>
+<h1>作品を投稿</h1>
     <%= form_tag("/posts/create", {multipart: true}) do %>
-      <div>
+      <div class="post-container">
         <div>
           <% @post.errors.full_messages.each do |message| %>
-            <div>
               <%= message %>
-            </div>
           <% end %>
-          <div>画像(サムネ)</div>
+          <h4>画像(サムネ)</h4>
           <input name="image" type="file"><br>
-          <div>タイトル</div>
-          <textarea name="title"><%= @post.title %></textarea>
-          <div>内容(ポートフォリオの)</div>
-          <textarea name="content"><%= @post.content %></textarea>
-          <div>ポートフォリオのURL</div>
-          <input name="url" value="<%= @post.url %>"><br>
+          <h4>タイトル</h4>
+          <textarea name="title" placeholder="作品のタイトルを入力してください"><%= @post.title %></textarea>
+          <h4>内容(ポートフォリオの)</h4>
+          <textarea name="content" placeholder="作品の説明を140字以内で記入してください"><%= @post.content %></textarea>
+          <h4>ポートフォリオのURL</h4>
+          <input name="url" placeholder="作品に飛ぶURLを入力してください" value="<%= @post.url %>"><br>
           <input type="submit" value="投稿">
         </div>
       </div>
     <% end %>
-  </div>
-</div>
